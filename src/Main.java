@@ -10,7 +10,7 @@ class StaffMember {
     private String name;
     private String address;
     private String position;
-//    private String department;
+    private String department;
     private double salary;
 
 
