@@ -14,6 +14,7 @@ class StaffMember {
     private double salary;
 
 
+
 // Constructor to initialize staff member properties
     public StaffMember(String id, String name, String address, String position, String department, double salary) {
         this.id = id;
