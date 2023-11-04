@@ -1,4 +1,4 @@
-
+// These import statements are necessary to access the functionality provided by these classes within the Java program.
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
