@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
+ // Constructor to initialize staff member details
 class StaffMember {
     private String id;
     private String name;
@@ -21,6 +22,7 @@ class StaffMember {
         this.salary = salary;
     }
 
+     // Getter and setter methods for accessing and modifying staff member details
     public String getId() {
         return id;
     }
@@ -57,6 +59,7 @@ class StaffMember {
         this.salary = salary;
     }
 
+    // Static method to ensure valid salary input from the user
     public static double getValidSalary(Scanner scanner) {
         double salary;
         while (true) {
@@ -85,17 +88,18 @@ class StaffMember {
     }
 }
 
+// Define the StaffRecordSystem class to manage a list of staff members
 class StaffRecordSystem {
     private List<StaffMember> staffMembers;
-
+// Constructor to initialize the list of staff members
     public StaffRecordSystem() {
         staffMembers = new ArrayList<>();
     }
-
+ // Method to add a staff member to the list
     public void addStaffMember(StaffMember member) {
         staffMembers.add(member);
     }
-
+// Method to retrieve a staff member by name (case-insensitive)
     public StaffMember getStaffMemberByName(String name) {
         for (StaffMember member : staffMembers) {
             if (member.getName().equalsIgnoreCase(name)) {
@@ -104,11 +108,11 @@ class StaffRecordSystem {
         }
         return null;
     }
-
+// Method to get a list of all staff members
     public List<StaffMember> getAllStaffMembers() {
         return staffMembers;
     }
-
+    // Method to update the details of a staff member
     public void updateStaffMember(String name, String newPosition, double newSalary, String newDepartment) {
         for (StaffMember member : staffMembers) {
             if (member.getName().equalsIgnoreCase(name)) {
@@ -119,13 +123,16 @@ class StaffRecordSystem {
         }
     }
 }
-
+// Main class for the program
 public class Main {
     public static void main(String[] args) {
+         // Create a StaffRecordSystem instance to manage staff members
         StaffRecordSystem recordSystem = new StaffRecordSystem();
         Scanner scanner = new Scanner(System.in);
 
+         // Main program loop to interact with the user
         while (true) {
+             // Display menu options for the user
             System.out.println("Staff Record System");
             System.out.println("- - - - - - - - - - - - -");
             System.out.println("1. Add Staff Member");
@@ -136,11 +143,13 @@ public class Main {
             System.out.println("- - - - - - - - - - - - -");
             System.out.print("Enter your choice: ");
 
+            // Read the user's choice
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
+                // Option to add a new staff member
                     System.out.print("Enter Name: ");
                     String name = scanner.nextLine();
                     System.out.print("Enter Address: ");
@@ -155,6 +164,7 @@ public class Main {
                     break;
 
                 case 2:
+                // Option to retrieve a staff member by name
                     System.out.print("Enter Name to retrieve: ");
                     String retrieveName = scanner.nextLine();
                     StaffMember retrievedStaff = recordSystem.getStaffMemberByName(retrieveName);
@@ -174,6 +184,7 @@ public class Main {
                     break;
 
                 case 3:
+                // Option to update a staff member's details
                     System.out.print("Enter Name to update: ");
                     String updateName = scanner.nextLine();
                     System.out.print("Enter new Position: ");
@@ -187,6 +198,7 @@ public class Main {
                     break;
 
                 case 4:
+                 // Option to list all staff members
                     List<StaffMember> allStaffMembers = recordSystem.getAllStaffMembers();
                     if (allStaffMembers.isEmpty()) {
                         System.out.println("No staff members found.");
@@ -205,18 +217,21 @@ public class Main {
                     break;
 
                 case 5:
+                 // Option to exit the program
                     System.out.println("Exiting the program.");
                     scanner.close();
                     System.exit(0);
                     break;
 
                 default:
+                // Handle invalid user choices
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
         }
     }
-
+    
+ // Generate a random staff member ID
     private static String generateRandomID() {
         Random random = new Random();
         char prefix = (random.nextBoolean()) ? 'A' : 'W';
